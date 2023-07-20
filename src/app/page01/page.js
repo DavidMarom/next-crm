@@ -34,7 +34,6 @@ const Page01 = () => {
         <p>Price: </p><input type="number" onChange={(e) => setPrice(e.target.value)} />
         <button onClick={async () => {
           const res = await http.post("/api01", { name, price });
-          console.log(res);
           getData();
         }}>Insert</button> 
       </PageContainer>

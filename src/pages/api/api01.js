@@ -22,6 +22,14 @@ async function handler(req, res) {
     catch (error) { res.status(500).json({ message: "Inserting data failed!" }) }
   }
 
+  if (req.method === "DELETE") {
+    try {
+      const client = await connectDatabase();
+      const result = await client.db().collection("items").deleteMany({});
+      res.status(201).json({ message: "Deleted all documents." });
+    }
+    catch (error) { res.status(500).json({ message: "Deleting data failed!" }) }
+  }
 }
 
 export default handler;

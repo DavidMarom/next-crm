@@ -7,6 +7,7 @@ function SideBar() {
         <div className={styles.container}>
             <Link href="/">Home</Link>
             <Link href="/page01">Page01</Link>
+            <Link href="/page02">Page02</Link>
         </div>
     )
 }
