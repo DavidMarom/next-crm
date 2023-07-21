@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: start;
 
-  width: 200px;
+  min-width: 200px;
   height: 100vh;
   background-color: #67225b;
   padding: 20px;

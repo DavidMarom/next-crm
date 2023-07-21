@@ -19,8 +19,9 @@ const Page02 = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
-  const [rows, setRows] = useState([]);
+  const [rows, setRows] = useState(localStorage.getItem("data") ? JSON.parse(localStorage.getItem("data")) : []);
   const [loading, setLoading] = useState(false);
+  const [deleteLoading, setDeleteLoading] = useState(false);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -36,6 +37,7 @@ const Page02 = () => {
   const getData = async () => {
     setLoading(true);
     const res = await http.get("/api01");
+    localStorage.setItem("data", JSON.stringify(res.data));
     setRows(res.data);
     setLoading(false);
   }
@@ -80,14 +82,15 @@ const Page02 = () => {
 
                       )}
                       <TableCell>
-                        <button onClick={async () => {
-
-                          const res = await http.delete("/api01" , { params: { id: row._id } });
-
-
-                          getData();
-
-                        }}>Delete</button>
+                        {deleteLoading ?
+                          <p>Deleting...</p> :
+                          <button onClick={async () => {
+                            setDeleteLoading(true);
+                            const res = await http.delete("/api01", { params: { id: row._id } });
+                            getData();
+                            setDeleteLoading(false);
+                          }}>Delete</button>
+                        }
                       </TableCell>
                     </TableRow>
                   );
