@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react';
 import { Row } from '@/components';
 import http from '../../services/http';
 import { PageContainer } from '@/components';
-import { Table } from 'antd';
+import { DatePicker } from 'antd';
+
 
 const Page02 = () => {
   const [data, setData] = useState([
@@ -12,7 +13,7 @@ const Page02 = () => {
       price: 0,
       key: 1
     }
-    
+
   ]);
   const [loading, setLoading] = useState(false);
 
@@ -51,9 +52,8 @@ const Page02 = () => {
       <PageContainer>
         <h1>Calling mongoDB</h1>
 
+        <DatePicker />;
 
-
-        {!loading ? <Table dataSource={data} columns={columns} /> : null}
       </PageContainer>
     </Row>
   );
