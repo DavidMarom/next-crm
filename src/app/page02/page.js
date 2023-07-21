@@ -19,7 +19,7 @@ const Page02 = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
-  const [rows, setRows] = useState(localStorage.getItem("data") ? JSON.parse(localStorage.getItem("data")) : []);
+  const [rows, setRows] = useState(typeof window !== 'undefined' && (localStorage.getItem("data")) ? JSON.parse(localStorage.getItem("data")) : []);
   const [loading, setLoading] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
 
