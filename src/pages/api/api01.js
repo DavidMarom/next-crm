@@ -1,6 +1,8 @@
-import { connectDatabase, getAllDocuments, insertDocument } from "../../services/db";
+import { connectDatabase, getAllDocuments, insertDocument, deleteDocument } from "../../services/db";
 
 async function handler(req, res) {
+  console.log('1111111111', req.query.id, '**********')
+
   if (req.method === "GET") {
     try {
       const client = await connectDatabase();
@@ -23,10 +25,12 @@ async function handler(req, res) {
   }
 
   if (req.method === "DELETE") {
+    const id = req.query.id;
+    console.log('222222222', id, '**********')
     try {
       const client = await connectDatabase();
-      const result = await client.db().collection("items").deleteMany({});
-      res.status(201).json({ message: "Deleted all documents." });
+      const result = await deleteDocument(client, "items", id);
+      res.status(201).json({ message: "Deleted document." });
     }
     catch (error) { res.status(500).json({ message: "Deleting data failed!" }) }
   }
