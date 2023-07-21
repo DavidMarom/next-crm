@@ -5,9 +5,9 @@ import styles from './sidebar.module.css'
 function SideBar() {
     return (
         <div className={styles.container}>
-            <Link href="/">Home</Link>
-            <Link href="/page01">Page01</Link>
-            <Link href="/page02">Page02</Link>
+            <Link href="/"><div className={styles.sidebarbtn}>Home</div></Link>
+            <Link href="/page01"><div className={styles.sidebarbtn}>Page01</div></Link>
+            <Link href="/page02"><div className={styles.sidebarbtn}>Page02</div></Link>
         </div>
     )
 }
