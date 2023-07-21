@@ -1,4 +1,4 @@
-import { MongoClient } from "mongodb";
+import { MongoClient, ObjectId } from "mongodb";
 
 export async function connectDatabase() {
   return await MongoClient.connect(process.env.DB_CONNECTION);
@@ -17,11 +17,12 @@ export async function getAllDocuments(client, collection) {
 }
 
 export async function deleteDocument(client, collection, id) {
-  console.log('333333333', id, '**********')
   const db = client.db('bold');
   try {
-    const result = await db.collection(collection).deleteOne({ _id: id });
-    console.log('444444444', result, '**********')
+    const objectId = new ObjectId(id);
+    const filter = { _id: objectId };
+
+    const result = await db.collection(collection).deleteOne(filter);
     return result;
   } catch (error) {
     console.log(error)

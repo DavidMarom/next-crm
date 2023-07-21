@@ -1,7 +1,6 @@
 import { connectDatabase, getAllDocuments, insertDocument, deleteDocument } from "../../services/db";
 
 async function handler(req, res) {
-  console.log('1111111111', req.query.id, '**********')
 
   if (req.method === "GET") {
     try {
@@ -26,7 +25,6 @@ async function handler(req, res) {
 
   if (req.method === "DELETE") {
     const id = req.query.id;
-    console.log('222222222', id, '**********')
     try {
       const client = await connectDatabase();
       const result = await deleteDocument(client, "items", id);
