@@ -87,7 +87,7 @@ const Page02 = () => {
                           <button onClick={async () => {
                             setDeleteLoading(true);
                             const res = await http.delete("/api01", { params: { id: row._id } });
-                            getData();
+                            await getData();
                             setDeleteLoading(false);
                           }}>Delete</button>
                         }
