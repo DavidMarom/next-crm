@@ -12,6 +12,7 @@ export default function Home() {
     <main className={styles.main}>
       <h1>Home</h1>
       <div>
+        <p>---</p>
         <p>Counter: {count}</p>
         <button onClick={increment}>Increment</button>
         <button onClick={decrement}>Decrement</button>
