@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Row } from '@/components';
 import http from '../../services/http';
 import { PageContainer } from '@/components';
@@ -10,10 +10,6 @@ const Page01 = () => {
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
-
-  // useEffect(() => { getData() }, []);
-
-
 
   return (
     <Row>

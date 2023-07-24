@@ -1,7 +1,8 @@
+'use client';
 import { MongoClient, ObjectId } from "mongodb";
 
 export async function connectDatabase() {
-  return await MongoClient.connect(process.env.DB_CONNECTION);
+  return await MongoClient.connect(process.env.PUBLIC_DB_CONNECTION);
 }
 
 export async function insertDocument(client, collection, document) {
