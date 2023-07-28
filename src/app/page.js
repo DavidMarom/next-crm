@@ -2,6 +2,7 @@
 import Image from 'next/image'
 import styles from './page.module.css'
 import useCounterStore from '../store/counter';
+import { Row, Col, PageContainer } from '../components';
 
 export default function Home() {
   const count = useCounterStore((state) => state.count);
@@ -9,16 +10,15 @@ export default function Home() {
   const decrement = useCounterStore((state) => state.decrement);
 
   return (
-    <main className={styles.main}>
+    <PageContainer>
       <h1>Home</h1>
       <div>
-        <p>---</p>
-        <p>Counter: {count}</p>
+
+        <p>Testing Zustand: {count}</p>
         <button onClick={increment}>Increment</button>
         <button onClick={decrement}>Decrement</button>
       </div>
 
-      <p>How do you do?</p>
-    </main>
+    </PageContainer>
   )
 }

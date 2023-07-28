@@ -1,6 +1,6 @@
 'use client'
 import react, { useEffect, useState } from 'react';
-import { Row } from '@/components';
+import { Row, Card01 } from '@/components';
 import http from '../../services/http';
 import { PageContainer } from '@/components';
 
@@ -100,16 +100,17 @@ const Page02 = () => {
 
           </Table>
         </TableContainer>
-        <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
-          component="div"
-          count={rows.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        />
-
+        <Card01>
+          <TablePagination
+            rowsPerPageOptions={[5, 10, 25]}
+            component="div"
+            count={rows.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
+        </Card01>
       </PageContainer>
     </Row >
   );
