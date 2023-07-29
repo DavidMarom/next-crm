@@ -6,7 +6,8 @@ export const RowContainer = styled.div`
   justify-content: ${({ justifycontent }) => justifycontent};
   align-items: ${({ center }) => (center ? 'center' : 'flex-start')};
   background-color: ${({ background }) => background};
-  width: 100%;
+  width: ${({ width }) => width};
   height: ${({ height }) => height};
   margin-bottom: ${({ marginbottom }) => marginbottom};
+  padding-top: ${({ paddingtop }) => paddingtop};
 `;

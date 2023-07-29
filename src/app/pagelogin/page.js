@@ -46,25 +46,23 @@ const Page01 = () => {
 
   typeof window !== 'undefined' && console.log('------', user);
   return (
-    <Row>
-      <PageContainer>
-        <h1>Login</h1>
+    <PageContainer>
+      <h1>Login</h1>
 
-        {user ?
-          <Button onClick={doSignOut}>Logout</Button> :
-          <Button onClick={doSignup}>Login</Button>
-        }
-        {user ?
-          <div>
-            <p>Logged in as:</p>
-            <p>{user.name}</p>
-            <p>{user.mail}</p>
-          </div>
-          :
-          null}
+      {user ?
+        <Button onClick={doSignOut}>Logout</Button> :
+        <Button onClick={doSignup}>Login</Button>
+      }
+      {user ?
+        <div>
+          <p>Logged in as:</p>
+          <p>{user.name}</p>
+          <p>{user.mail}</p>
+        </div>
+        :
+        null}
 
-      </PageContainer>
-    </Row>
+    </PageContainer>
   );
 }
 

@@ -2,11 +2,9 @@ import styled from "styled-components";
 
 export const ButtonContainer = styled.button`
   width: ${({ width }) => width};
-  height: ${({ size }) =>
-    size === "small" ? 30 : size === "medium" ? 50 : 70}px;
+  height: ${({ size }) => size === "small" ? 30 : size === "medium" ? 50 : 70}px;
   border-radius: ${({ rounded }) => (rounded ? "50px" : "0")};
-  background-color: ${({ backgroundColor, disable }) =>
-    disable ? "#b4ccfe" : backgroundColor};
+  background-color: ${({ backgroundColor, disable }) => disable ? "#b4ccfe" : backgroundColor};
   display: flex;
   justify-content: center;
   align-items: center;

@@ -8,7 +8,7 @@ export const SBContainer = styled.div`
   background-color: ${({ background }) => background};
   width: ${({ width }) => width};
   height: ${({ height }) => height};
-  padding: 10px;
+  padding: 17px;
 
   overflow-y: auto; 
 

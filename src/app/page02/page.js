@@ -49,70 +49,68 @@ const Page02 = () => {
   ];
 
   return (
-    <Row>
-      <PageContainer>
-        <h1>Calling mongoDB</h1>
+    <PageContainer>
+      <h1>Calling mongoDB</h1>
 
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell>Id</TableCell>
-                <TableCell>Name</TableCell>
-                <TableCell>Price</TableCell>
-                <TableCell>Action</TableCell>
-              </TableRow>
-            </TableHead>
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Id</TableCell>
+              <TableCell>Name</TableCell>
+              <TableCell>Price</TableCell>
+              <TableCell>Action</TableCell>
+            </TableRow>
+          </TableHead>
 
-            <TableBody>
+          <TableBody>
 
-              {rows
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row) => {
-                  return (
-                    <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                      {columns.map((column) => {
-                        const value = row[column.id];
-                        return (
-                          <TableCell key={column.id} align={column.align}>
-                            {column.format && typeof value === 'number' ? column.format(value) : value}
-                          </TableCell>
-                        );
+            {rows
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((row) => {
+                return (
+                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                    {columns.map((column) => {
+                      const value = row[column.id];
+                      return (
+                        <TableCell key={column.id} align={column.align}>
+                          {column.format && typeof value === 'number' ? column.format(value) : value}
+                        </TableCell>
+                      );
+                    }
+
+                    )}
+                    <TableCell>
+                      {deleteLoading ?
+                        <p>Deleting...</p> :
+                        <button onClick={async () => {
+                          setDeleteLoading(true);
+                          const res = await http.delete("/api01", { params: { id: row._id } });
+                          await getData();
+                          setDeleteLoading(false);
+                        }}>Delete</button>
                       }
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
 
-                      )}
-                      <TableCell>
-                        {deleteLoading ?
-                          <p>Deleting...</p> :
-                          <button onClick={async () => {
-                            setDeleteLoading(true);
-                            const res = await http.delete("/api01", { params: { id: row._id } });
-                            await getData();
-                            setDeleteLoading(false);
-                          }}>Delete</button>
-                        }
-                      </TableCell>
-                    </TableRow>
-                  );
-                })}
+          </TableBody>
 
-            </TableBody>
-
-          </Table>
-        </TableContainer>
-        <Card01>
-          <TablePagination
-            rowsPerPageOptions={[5, 10, 25]}
-            component="div"
-            count={rows.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          />
-        </Card01>
-      </PageContainer>
-    </Row >
+        </Table>
+      </TableContainer>
+      <Card01>
+        <TablePagination
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={rows.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
+      </Card01>
+    </PageContainer>
   );
 }
 

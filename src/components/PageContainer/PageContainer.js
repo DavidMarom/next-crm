@@ -6,13 +6,13 @@ function PageContainer({
     children,
     width = "100%",
     height = "100vh",
-    justifycontent = "start",
+    justifycontent = "flex-start",
     background = "#777777"
 }) {
 
     return (
         <SBContainer
-        justifycontent={justifycontent}
+            justifycontent={justifycontent}
             height={height}
             background={background}
             width={width}

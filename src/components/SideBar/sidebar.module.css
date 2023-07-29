@@ -1,7 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
 
   min-width: 200px;
   height: 100vh;
@@ -17,7 +17,7 @@
   height: 50px;
   margin-bottom: 10px;
   border-radius: 5px;
-  background-color: #3b446b;
+  background-color: #2f3657;
   color: #fff;
   text-decoration: none;
   padding: 10px;
@@ -27,4 +27,5 @@
 
 .sidebarbtn:hover {
   background-color: #49548a;
+  padding-left: 15px;
 }
