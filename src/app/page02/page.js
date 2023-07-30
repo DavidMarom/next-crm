@@ -1,6 +1,6 @@
 'use client'
 import react, { useEffect, useState } from 'react';
-import { Row, Card01 } from '@/components';
+import { Col, Row, Card01 } from '@/components';
 import http from '../../services/http';
 import { PageContainer } from '@/components';
 
@@ -18,6 +18,9 @@ import TablePagination from '@mui/material/TablePagination';
 const Page02 = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [editPopupOn, setEditPopupOn] = useState(false);
+
+  const [editPopupData, setEditPopupData] = useState({});
 
   const [rows, setRows] = useState(typeof window !== 'undefined' && (localStorage.getItem("data")) ? JSON.parse(localStorage.getItem("data")) : []);
   const [loading, setLoading] = useState(false);
@@ -42,6 +45,12 @@ const Page02 = () => {
     setLoading(false);
   }
 
+  const triggerEditPopup = (row) => {
+    console.log(row);
+    setEditPopupData(row);
+    setEditPopupOn(true);
+  }
+
   const columns = [
     { id: '_id', label: 'ID', minWidth: 170 },
     { id: 'name', label: 'Name', minWidth: 170 },
@@ -51,6 +60,16 @@ const Page02 = () => {
   return (
     <PageContainer>
       <h1>Calling mongoDB</h1>
+      <Card01 background="#555555" direction="column">
+        <h2>Edit a record:</h2>
+        <Row>
+          <div>
+            <p>Name</p>
+            <input type="text" name="name" onChange={(e) => { setEditPopupData({ ...editPopupData, name: e.target.value }) }} value={editPopupData.name} />
+          </div>
+        </Row>
+      </Card01>
+
 
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -83,12 +102,18 @@ const Page02 = () => {
                     <TableCell>
                       {deleteLoading ?
                         <p>Deleting...</p> :
-                        <button onClick={async () => {
-                          setDeleteLoading(true);
-                          const res = await http.delete("/api01", { params: { id: row._id } });
-                          await getData();
-                          setDeleteLoading(false);
-                        }}>Delete</button>
+                        <div>
+                          <button onClick={async () => {
+                            setDeleteLoading(true);
+                            await http.delete("/api01", { params: { id: row._id } });
+                            await getData();
+                            setDeleteLoading(false);
+                          }}>Delete</button>
+
+                          <button onClick={() => { triggerEditPopup(row) }}>
+                            Edit
+                          </button>
+                        </div>
                       }
                     </TableCell>
                   </TableRow>

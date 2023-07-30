@@ -2,7 +2,7 @@
 import PropTypes from "prop-types"
 import { ColContainer } from "./Col.style"
 
-function Row({
+function Col({
     children,
     width = "100%",
     height = "300px",
@@ -22,7 +22,7 @@ function Row({
     )
 }
 
-Row.propTypes = {
+Col.propTypes = {
     width: PropTypes.string,
     children: PropTypes.node,
     height: PropTypes.string,
@@ -30,4 +30,4 @@ Row.propTypes = {
     justifycontent: PropTypes.string
 }
 
-export default Row
+export default Col

@@ -7,12 +7,12 @@ export const Container = styled.div`
   height: ${({ height }) => height};
   width: ${({ width }) => width};
   border-radius: ${({ borderRadius }) => borderRadius}px;
-  background-color: ${({ darkMode }) => (darkMode ? `${DARK}` : `${LIGHT}`)};
+  background-color: ${({ background }) => background};
   padding: 10px;
   border-radius: 10px;
   margin-top: 10px;
   display: flex;
-  flex-direction: row;
+  flex-direction: ${({ direction }) => direction};
   justify-content: space-between;
   overflow: hidden;
 
