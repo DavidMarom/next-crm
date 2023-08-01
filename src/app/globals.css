@@ -117,3 +117,7 @@ a {
   flex-direction: row;
   justify-content: flex-start;
 }
+
+.popup-text {
+  color: #1e1e1e;
+}

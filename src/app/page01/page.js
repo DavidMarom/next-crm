@@ -17,9 +17,6 @@ const Page01 = () => {
 
       {
         loading ? <h1>Loading...</h1> :
-
-
-
           <Formik
             initialValues={{ name: '', price: '' }}
             validate={values => {

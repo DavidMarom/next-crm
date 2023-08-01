@@ -1,8 +1,7 @@
 'use client';
-import Image from 'next/image'
-import styles from './page.module.css'
+
 import useCounterStore from '../store/counter';
-import { Row, Col, PageContainer, Button } from '../components';
+import { Row, PageContainer, Button } from '../components';
 
 export default function Home() {
   const count = useCounterStore((state) => state.count);

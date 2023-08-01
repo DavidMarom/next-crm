@@ -60,15 +60,31 @@ const Page02 = () => {
   return (
     <PageContainer>
       <h1>Calling mongoDB</h1>
-      <Card01 background="#555555" direction="column">
-        <h2>Edit a record:</h2>
-        <Row>
-          <div>
-            <p>Name</p>
-            <input type="text" name="name" onChange={(e) => { setEditPopupData({ ...editPopupData, name: e.target.value }) }} value={editPopupData.name} />
-          </div>
-        </Row>
-      </Card01>
+      {editPopupOn &&
+        <Card01 background="#555555" direction="column">
+          <h2>Edit a record:</h2>
+          <Row>
+            <div>
+              <p>Name</p>
+              <input type="text" name="name" onChange={(e) => { setEditPopupData({ ...editPopupData, name: e.target.value }) }} value={editPopupData.name} />
+            </div>
+            <div>
+              <p>Price</p>
+              <input type="text" name="price" onChange={(e) => { setEditPopupData({ ...editPopupData, price: e.target.value }) }} value={editPopupData.price} />
+            </div>
+            <div>
+              <button onClick={async () => {
+                setDeleteLoading(true);
+                await http.put("/api01", editPopupData);
+                await getData();
+                setDeleteLoading(false);
+                setEditPopupOn(false);
+              }}>Save</button>
+              <button onClick={() => { setEditPopupOn(false) }}>Cancel</button>
+            </div>
+          </Row>
+        </Card01>
+      }
 
 
       <TableContainer component={Paper}>
