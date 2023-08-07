@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <div className='layout-container'>
-          {/* <PopupProvider /> */}
+          <PopupProvider />
           <SideBar />
           {children}
         </div>

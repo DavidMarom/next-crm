@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const Container = styled.div`
   position: fixed;
@@ -12,5 +12,12 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
 
+  animation: fadein 0.2s;
+
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+`;
